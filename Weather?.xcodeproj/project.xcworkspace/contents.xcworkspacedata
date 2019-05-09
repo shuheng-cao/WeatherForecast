@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "group:../Weather?/Assets.xcassets"
+      name = "Assets.xcassets">
+      <Group
+         location = "group:step2.imageset"
+         name = "step2.imageset">
+         <FileRef
+            location = "group:step2.png">
+         </FileRef>
+         <FileRef
+            location = "group:Contents.json">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:step3.imageset"
+         name = "step3.imageset">
+         <FileRef
+            location = "group:step3.png">
+         </FileRef>
+         <FileRef
+            location = "group:Contents.json">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:snowy.imageset"
+         name = "snowy.imageset">
+         <FileRef
+            location = "group:icons8-winter-filled-50.png">
+         </FileRef>
+         <FileRef
+            location = "group:Contents.json">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:partly cloudy.imageset"
+         name = "partly cloudy.imageset">
+         <FileRef
+            location = "group:icons8-partly-cloudy-day-filled-50.png">
+         </FileRef>
+         <FileRef
+            location = "group:Contents.json">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:list.imageset"
+         name = "list.imageset">
+         <FileRef
+            location = "group:list.png">
+         </FileRef>
+         <FileRef
+            location = "group:Contents.json">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:step5.imageset"
+         name = "step5.imageset">
+         <FileRef
+            location = "group:step5.png">
+         </FileRef>
+         <FileRef
+            location = "group:Contents.json">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:step4.imageset"
+         name = "step4.imageset">
+         <FileRef
+            location = "group:step4.png">
+         </FileRef>
+         <FileRef
+            location = "group:Contents.json">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:close.imageset"
+         name = "close.imageset">
+         <FileRef
+            location = "group:Contents.json">
+         </FileRef>
+         <FileRef
+            location = "group:close.png">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:sunny.imageset"
+         name = "sunny.imageset">
+         <FileRef
+            location = "group:Contents.json">
+         </FileRef>
+         <FileRef
+            location = "group:icons8-sun-filled-50.png">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:AppIcon.appiconset"
+         name = "AppIcon.appiconset">
+         <FileRef
+            location = "group:Contents.json">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:developer.imageset"
+         name = "developer.imageset">
+         <FileRef
+            location = "group:developer.png">
+         </FileRef>
+         <FileRef
+            location = "group:Contents.json">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:cloudy.imageset"
+         name = "cloudy.imageset">
+         <FileRef
+            location = "group:cloudy.png">
+         </FileRef>
+         <FileRef
+            location = "group:Contents.json">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:Contents.json">
+      </FileRef>
+      <Group
+         location = "group:step1.imageset"
+         name = "step1.imageset">
+         <FileRef
+            location = "group:step1.PNG">
+         </FileRef>
+         <FileRef
+            location = "group:Contents.json">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:step0.imageset"
+         name = "step0.imageset">
+         <FileRef
+            location = "group:step0.png">
+         </FileRef>
+         <FileRef
+            location = "group:Contents.json">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:step6.imageset"
+         name = "step6.imageset">
+         <FileRef
+            location = "group:step6.png">
+         </FileRef>
+         <FileRef
+            location = "group:Contents.json">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:add.imageset"
+         name = "add.imageset">
+         <FileRef
+            location = "group:add.png">
+         </FileRef>
+         <FileRef
+            location = "group:Contents.json">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:rainy.imageset"
+         name = "rainy.imageset">
+         <FileRef
+            location = "group:icons8-rainy-weather-filled-50.png">
+         </FileRef>
+         <FileRef
+            location = "group:Contents.json">
+         </FileRef>
+      </Group>
+   </Group>
+   <FileRef
+      location = "self:">
+   </FileRef>
+</Workspace>

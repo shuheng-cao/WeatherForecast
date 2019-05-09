@@ -1,0 +1,6 @@
+>>> from PIL import Image
+>>> imageObject  = Image.open("./sample.jpg")
+>>> cropped     = imageObject.crop((100,30,400,300))
+>>> show(cropped)
+
+convert -density 300 presentation.pdf -quality 90 presentation.png
