@@ -2,11 +2,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import url, include
 from django.contrib import admin
-from weather.views import get_weather
+from weather.views import refresh
+from weather.views import retrain
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^weather/', get_weather),
+    url(r'^refresh/', refresh),
+    url(r'^retrain/', retrain),
 
 ]
 

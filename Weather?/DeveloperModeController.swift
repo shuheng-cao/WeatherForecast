@@ -109,19 +109,91 @@ class DeveloperModeController: UIViewController {
     
     
     @IBAction func refreshAction(_ sender: Any) {
-        if timer.isValid {
+        if switchButtonB.isOn {
+            if timer.isValid {
+                timer.invalidate()
+                return
+            }
+            timer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(refresh), userInfo: nil, repeats: true)
+        } else {
             timer.invalidate()
-            return
+            
+            let url = URL(string: "http://127.0.0.1:8000/refresh/Toronto")! 
+            
+            //create the session object
+            let session = URLSession.shared
+            
+            //now create the URLRequest object using the url object
+            let request = URLRequest(url: url)
+            
+            //create dataTask using the session object to send data to the server
+            let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
+                
+                guard error == nil else {
+                    return
+                }
+                
+                guard let data = data else {
+                    return
+                }
+                
+                do {
+                    print(response as Any)
+                    //create json object from data
+                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                        print(json)
+                    }
+                } catch let error {
+                    print(error.localizedDescription)
+                }
+            })
+            
+            task.resume()
         }
-        timer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(refresh), userInfo: nil, repeats: true)
     }
     
     @IBAction func retrainAction(_ sender: Any) {
-        if timer.isValid {
+        if switchButtonB.isOn {
+            if timer.isValid {
+                timer.invalidate()
+                return
+            }
+            timer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(retrain), userInfo: nil, repeats: true)
+        } else {
             timer.invalidate()
-            return
+            
+            let url = URL(string: "http://127.0.0.1:8000/retrain/Toronto")!
+            
+            //create the session object
+            let session = URLSession.shared
+            
+            //now create the URLRequest object using the url object
+            let request = URLRequest(url: url)
+            
+            //create dataTask using the session object to send data to the server
+            let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
+                
+                guard error == nil else {
+                    return
+                }
+                
+                guard let data = data else {
+                    return
+                }
+                
+                do {
+                    print(response as Any)
+                    //create json object from data
+                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                        print(json)
+                    }
+                } catch let error {
+                    print(error.localizedDescription)
+                }
+            })
+            
+            task.resume()
         }
-        timer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(retrain), userInfo: nil, repeats: true)
     }
     
     
@@ -143,6 +215,7 @@ class DeveloperModeController: UIViewController {
             index = 0
             timer.invalidate()
         }
+    
     }
     
     @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {

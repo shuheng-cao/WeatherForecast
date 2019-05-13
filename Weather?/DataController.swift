@@ -91,7 +91,7 @@ class WeatherInfo {
                 completion()
             }
         } else {
-            // TODO: connect to local server
+            // Currently, I only train the data for Toronto so most of the cities will makes no difference
         }
     }
     

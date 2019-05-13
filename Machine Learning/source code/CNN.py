@@ -7,6 +7,13 @@ import numpy as np
 import loader
 import random
 
+import requests
+from bs4 import BeautifulSoup
+import urllib.request 
+from PIL import Image
+from datetime import datetime
+import time
+
 def preprocess_data(size):
     training_size = int(size * 0.9)
     all_data = loader.load_data(size)
@@ -16,6 +23,33 @@ def preprocess_data(size):
     
     return (np.array([x[1] for x in training_data]), np.array([x[-1][0] for x in training_data])), \
             (np.array([x[1] for x in validation_data]), np.array([x[-1][0] for x in validation_data]))
+
+def fetch_image(timestamp, target):
+    date = datetime.fromtimestamp(timestamp)
+    params = {
+        'site': 'ONT',
+        'year': date.year,
+        'month': date.month,
+        'day': date.day,
+        'hour': date.hour,
+        'minute': date.minute,
+        'duration': 2,
+        'image_type': f'PRECIPET_{target.upper()}_WEATHEROFFICE'
+    }
+    try:
+        response = requests.session().get('http://climate.weather.gc.ca/radar/index_e.html', params=params)
+        html = BeautifulSoup(response.content, 'html.parser')
+        image_url = html.body.main.span.img['src']
+        image_base = 'http://climate.weather.gc.ca'
+        urllib.request.urlretrieve(image_base+image_url, f'/Users/caoshuheng 1/Desktop/{str(int(timestamp))}.jpg')
+        imageObject = Image.open(f'/Users/caoshuheng 1/Desktop/{str(int(timestamp))}.jpg')
+        cropped = imageObject.crop((300,100,450,250))
+        snow_img = cropped.convert('RGB')
+
+        return np.array(snow_img.getdata()).reshape(snow_img.size[0], snow_img.size[1], 3)
+    except:
+        print("ERROR: {}".format(str(int(timestamp))))
+
 
 def cnn_training(cached = True):
     (X_train, y_train), (X_test, y_test) = preprocess_data(10000)
@@ -38,12 +72,12 @@ def cnn_training(cached = True):
 
     if cached:
         # load json and create model
-        json_file = open('cache/cnn_model2.json', 'r')
+        json_file = open('/Users/caoshuheng 1/Desktop/Weather?/Machine Learning/source code/cache/cnn_model2.json', 'r')
         loaded_model_json = json_file.read()
         json_file.close()
         model = model_from_json(loaded_model_json)
         # load weights into new model
-        model.load_weights("cache/cnn_model2.h5")
+        model.load_weights("/Users/caoshuheng 1/Desktop/Weather?/Machine Learning/source code/cache/cnn_model2.h5")
         print("Loaded model from disk")
     else:
         #create model
@@ -61,25 +95,28 @@ def cnn_training(cached = True):
         print("new model created")
 
     model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
-    model.fit(X_train, y_train,validation_data=(X_test, y_test), epochs=30)
+    model.fit(X_train, y_train,validation_data=(X_test[:5000], y_test), epochs=10)
+    model.fit(X_train, y_train,validation_data=(X_test[:10000], y_test), epochs=30)
 
     # save automatically
     # serialize model to JSON
     model_json = model.to_json()
-    with open("cache/cnn_model2.json", "w") as json_file:
+    with open("/Users/caoshuheng 1/Desktop/Weather?/Machine Learning/source code/cache/cnn_model2.json", "w") as json_file:
         json_file.write(model_json)
     # serialize weights to HDF5
-    model.save_weights("cache/cnn_model2.h5")
+    model.save_weights("/Users/caoshuheng 1/Desktop/Weather?/Machine Learning/source code/cache/cnn_model2.h5")
     print("Saved model to disk")
 
-def cnn_predicting(data):
+def cnn_predicting(data = None):
+    if data is None:
+        data = fetch_image(int(time.time()), "snow")
     # load json and create model
-    json_file = open('cache/cnn_model2.json', 'r')
+    json_file = open('/Users/caoshuheng 1/Desktop/Weather?/Machine Learning/source code/cache/cnn_model2.json', 'r')
     loaded_model_json = json_file.read()
     json_file.close()
     model = model_from_json(loaded_model_json)
     # load weights into new model
-    model.load_weights("cache/cnn_model2.h5")
+    model.load_weights("/Users/caoshuheng 1/Desktop/Weather?/Machine Learning/source code/cache/cnn_model2.h5")
     print("Loaded model from disk")
    
     model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
