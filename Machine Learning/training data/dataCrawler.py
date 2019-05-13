@@ -6,7 +6,7 @@ key = "10e08d045423d75673a8129ff5ad26c5"
 latitude = 43.6518927
 longitude = -79.381713
 
-for time in range(1534809600, 1546318800, 60 * 60):
+for time in range(1483246800, 1546318800, 60 * 60):
     URL = f"https://api.darksky.net/forecast/{key}/{latitude},{longitude},{time}"
     r = requests.get(url=URL)
     data = r.json()
