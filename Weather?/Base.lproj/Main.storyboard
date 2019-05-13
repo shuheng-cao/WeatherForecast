@@ -79,6 +79,9 @@
                                 <state key="normal" title="Retrain">
                                     <color key="titleColor" red="0.99404761900000005" green="0.9880952381" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
+                                <connections>
+                                    <action selector="retrainAction:" destination="1uu-vW-Zxe" eventType="touchUpInside" id="L1i-q0-MYT"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ibr-bj-6RJ">
                                 <rect key="frame" x="20" y="286" width="374" height="306"/>

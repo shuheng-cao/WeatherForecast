@@ -18,10 +18,23 @@ class DeveloperModeController: UIViewController {
     @IBOutlet weak var switchButtonB: UISwitch!
     var timer = Timer()
     var index = 0
+    var refreshImages: [UIImage] = []
+    var retrainImages: [UIImage] = []
+    
     
     override func viewDidLoad() {
         refreshButton.layer.cornerRadius = 5
         retrainButton.layer.cornerRadius = 5
+        for i in 0...8 {
+            refreshImages.append(UIImage(named: "step\(i)")!)
+        }
+        for i in 0...2 {
+            retrainImages.append(UIImage(named: "step\(i)")!)
+        }
+        
+        for i in 3...14 {
+            retrainImages.append(UIImage(named: "step\(i)'")!)
+        }
         
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
         swipeDown.direction = UISwipeGestureRecognizer.Direction.down
@@ -30,6 +43,8 @@ class DeveloperModeController: UIViewController {
     
     @IBAction func touchSwitchA(_ sender: Any) {
         timer.invalidate()
+        index = 0
+        
         graphField.image = UIImage(named: "step0")
         if switchButtonA.isOn {
             // get the current date and time
@@ -70,6 +85,8 @@ class DeveloperModeController: UIViewController {
     
     @IBAction func touchSwitchB(_ sender: Any) {
         timer.invalidate()
+        index = 0
+        
         graphField.image = UIImage(named: "step0")
         if switchButtonB.isOn {
             
@@ -93,17 +110,36 @@ class DeveloperModeController: UIViewController {
     
     @IBAction func refreshAction(_ sender: Any) {
         if timer.isValid {
+            timer.invalidate()
             return
         }
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(refresh), userInfo: nil, repeats: true)
     }
     
-    @objc func timerAction() {
+    @IBAction func retrainAction(_ sender: Any) {
+        if timer.isValid {
+            timer.invalidate()
+            return
+        }
+        timer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(retrain), userInfo: nil, repeats: true)
+    }
+    
+    
+    @objc func refresh() {
         index += 1
-        graphField.image = UIImage(named: "step\(index)")
+        graphField.image = refreshImages[index]
         
-        print(index)
-        if index >= 6 {
+        if index == 8 {
+            index = 0
+            timer.invalidate()
+        }
+    }
+    
+    @objc func retrain() {
+        index += 1
+        graphField.image = retrainImages[index]
+        
+        if index == 14 {
             index = 0
             timer.invalidate()
         }

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.9.10)  6 MAY 2019 15:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.9.10)  13 MAY 2019 06:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -909,7 +909,7 @@ Package pdftex.def Info: example.png used on input line 156.
 Here is how much of TeX's memory you used:
  31991 strings out of 492995
  683172 string characters out of 6132704
- 855003 words of memory out of 5000000
+ 855002 words of memory out of 5000000
  35038 multiletter control sequences out of 15000+600000
  7005 words of font info for 20 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
