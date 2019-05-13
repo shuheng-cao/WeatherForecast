@@ -89,17 +89,8 @@
                                     <constraint firstAttribute="height" constant="306" id="WgR-El-XYF"/>
                                 </constraints>
                                 <string key="text">Watching for file changes with StatReloader
-Performing system checks...
-
-System check identified no issues (0 silenced).
-
-You have 5 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, weather.
-Run 'python manage.py migrate' to apply them.
-
-May 03, 2019 - 16:57:34
-Django version 2.2.1, using settings 'jsondj.settings'
-Starting development server at http://127.0.0.1:8000/
-Quit the server with CONTROL-C.</string>
+Performing system checks ...
+Connecting to Server ...</string>
                                 <color key="textColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="ArialHebrew" family="Arial Hebrew" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

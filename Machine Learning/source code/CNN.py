@@ -95,8 +95,8 @@ def cnn_training(cached = True):
         print("new model created")
 
     model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
-    model.fit(X_train, y_train,validation_data=(X_test[:5000], y_test), epochs=10)
-    model.fit(X_train, y_train,validation_data=(X_test[:10000], y_test), epochs=30)
+    model.fit(X_train[:5000], y_train[:5000],validation_data=(X_test, y_test), epochs=10)
+    model.fit(X_train, y_train,validation_data=(X_test, y_test), epochs=30)
 
     # save automatically
     # serialize model to JSON
@@ -122,4 +122,3 @@ def cnn_predicting(data = None):
     model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
     res = model.predict_classes(data)
     return res
-

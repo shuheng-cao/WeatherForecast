@@ -271,7 +271,8 @@ class NeuralNetwork():
 
 
 
-
+if __name__ ==  "__main__":
+    nn_training(cached=False)
 
             
 

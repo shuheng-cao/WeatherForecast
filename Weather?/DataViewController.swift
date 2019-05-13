@@ -80,8 +80,12 @@ class DataViewController: UIViewController, UIScrollViewDelegate {
 
     @objc func requestData() {
         self.dataFetching() {
-            print("requesting data")
-            self.refresher.endRefreshing()
+            DispatchQueue.main.async {
+                DispatchQueue.main.asyncAfter(deadline: .now() + DispatchTimeInterval.seconds(2)) {
+                    print("requesting data")
+                    self.refresher.endRefreshing()
+                }
+            }
         }
     }
     

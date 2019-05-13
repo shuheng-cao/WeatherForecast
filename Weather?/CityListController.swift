@@ -111,6 +111,7 @@ extension CityListController: UITableViewDelegate, UITableViewDataSource {
         print(indexPath[1])
         self.dismiss(animated: true, completion: nil)
         delegate?.goToPage(index: indexPath[1])
+        delegate?.updateCities(newCities: cityList)
     }
 }
 

@@ -93,7 +93,7 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate, UIPage
         // MARK: For debugging
         timeZoneMapping.updateValue(timeZoneMapping["Toronto"]!, forKey: "Waterloo")
         timeZoneMapping.updateValue(timeZoneMapping["Toronto"]!, forKey: "Ottawa")
-        for city in ["Vancouver", "Waterloo", "Toronto", "Ottawa", "Yellowknife", "New York", "Los Angeles", "Montreal", "Panama", "Tahiti", "Honolulu", "Rome", "Paris", "Moscow", "London", "Dublin", "Amsterdam", "Darwin", "Tokyo", "Shanghai", "Hong Kong"] {
+        for city in ["Vancouver", "Waterloo", "Toronto", "Ottawa", "Yellowknife", "New York", "Los Angeles", "Montreal", "Panama", "Tahiti", "Honolulu", "Rome", "Paris", "Moscow", "Dublin", "Amsterdam", "Darwin", "Tokyo", "Shanghai", "Hong Kong"] {
             let timeZone = timeZoneMapping[city]
             
             pageData.append(DataController(city, trimDate(timeZone: timeZone!)))
